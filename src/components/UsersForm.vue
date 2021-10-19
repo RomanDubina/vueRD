@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent>
-    <input-name @addName="addNewUserName"></input-name>
+    <input-name @addName = "addNewUserName" :name="user.name"></input-name>
     <input-age @addAge = "addNewUserAge"></input-age>
 
     <hr>
@@ -35,6 +35,7 @@ export default {
       this.user.age = age;
     },
     addUser(){
+      console.log('addUser')
       this.user.id = Date.now();
       this.$emit('addNewUser', this.user)
       this.user = {

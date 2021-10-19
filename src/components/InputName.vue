@@ -2,7 +2,7 @@
 
         <label>
             <p>Name:</p>
-            <input type="text" v-model="userName" @change="addUserName">
+            <input type="text" :value="name" @change="addUserName($event.target.value)">
         </label>
 
 </template>
@@ -10,16 +10,13 @@
 <script>
 export default {
         props: {
-
-        },
-        data(){
-            return{
-              userName: ''
-            }
+          name:{
+            type: String
+          }
         },
       methods: {
-          addUserName(){
-            this.$emit('addName', this.userName)
+          addUserName(e){
+            this.$emit('addName', e)
 
           }
       }
