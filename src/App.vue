@@ -1,26 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>
+        <users-form @addNewUser="saveUser"></users-form>
+      <hr>
+        <result-table :users="users"></result-table>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import UsersForm from "@/components/UsersForm";
+import ResultTable from "@/components/ResultTable";
+
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+    components:{
+     ResultTable, UsersForm
+    },
+    data: function () {
+        return {
+            users: [
+
+            ]
+        }
+    },
+  methods:{
+  saveUser(user){
+    this.users.push(user);
+  }
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
